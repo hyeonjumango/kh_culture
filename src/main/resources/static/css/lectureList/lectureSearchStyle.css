@@ -1,0 +1,193 @@
+.listSearchContainer .listDiv {
+    display: flex;
+    flex-direction: column;
+    width: 1320px;
+}
+
+.listSearchContainer .listDiv > div {
+    width: 100%;
+    display: flex;
+}
+
+.listSearchContainer .lectureDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height : 150px;
+    
+}
+
+.listSearchContainer .alignDiv {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: white;
+}
+.listSearchContainer .alignDiv a {
+    color: white;
+    font-weight: 300;
+}
+
+.listSearchContainer .alignDiv a.line {
+    border-bottom: 2px solid white;
+    font-weight: bold;
+}
+
+.listSearchContainer .listDiv .lectureDesc {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 170px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 20%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+    margin-bottom: 20px;
+}
+
+.listSearchContainer .listDiv .lectureDesc img{
+    width:100%;
+    height:100%;
+	object-fit:cover;
+}
+
+.listSearchContainer .listDiv .lectureDesc .lectureImg{
+	width : 170px;
+	
+}
+
+.listSearchContainer .lectureInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+  .listSearchContainer div.lectureInfo div:first-of-type p {
+    display: inline-block;
+    width: 92px;
+    height: 27px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .listSearchContainer div.lectureInfo h3 {
+    line-height: 1.2em;
+    margin-top: 18px;
+    margin-bottom: 3px;
+  }
+  
+  .listSearchContainer div.lectureInfo h3 a{
+    color : var(--main-font-color);
+  }
+  
+  .listSearchContainer div.lectureInfo div.lectureContent {
+      width: 860px;
+  }
+  .listSearchContainer div.lectureInfo div.lectureContent p {
+    font-size: 15px;
+    margin-bottom: 0;
+    font-weight: 400;
+    color : var(--main-font-color);
+  }
+  
+  .listSearchContainer .adult {
+    background-color: var(--lecturebackground-color);
+    color: white;
+  }
+  
+  .listSearchContainer .child {
+  background-color: var(--child-color);
+  color: white;
+}
+
+.listSearchContainer .kid {
+  background-color: var( --kid-color);
+  color: white;
+}
+  
+  .listSearchContainer .regular {
+    color: white;
+    background-color: gray;
+  }
+  
+  .listSearchContainer .short {
+  color: white;
+  background-color: #BD914A;
+}
+
+.listSearchContainer .free {
+  color: white;
+  background-color: #70562C;
+}
+
+.listSearchContainer .noLecture {
+	text-align : center;
+	color : white;
+	width : 100%;
+}
+.listSearchContainer div.lectureInfo div:first-of-type p:first-of-type {
+    margin-right: 7px;
+}
+
+.listSearchContainer .lectureInfo .openNotice {
+	font-size : 13px;
+	color : red;
+}
+
+  .listSearchContainer div.btnDiv {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin-right: 35px;
+    }
+    .listSearchContainer div.btnDiv div {
+        background-color: var(--lecturebackground-color);
+        width: 97px;
+        height: 97px;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-weight: 400;
+        cursor: pointer;
+    }
+    .listSearchContainer div.btnDiv div i {
+        font-size: 40px;
+        margin-bottom: 5px;
+    }
+
+    .listSearchContainer div.btnDiv div:first-of-type {
+        margin-right: 15px;
+    }
+    
+    .listSearchContainer .pagingDiv {
+   		 width: 890px;
+   		 margin: 0 auto;
+    }
+    
+    .listSearchContainer .board_paging {
+    	line-height: 50px;
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	/* width: 480px; */
+	margin : 0 auto;
+	padding: 0;
+    }
+    
+    /* .listSearchContainer .board_paging li{
+    	margin-right: -57px;
+    } */
+    
+     .listSearchContainer .board_paging a {
+	text-decoration: none;
+	color: #282A35;
+	width: 40px;
+	display: block;
+	text-align: center;
+}
+	 .listSearchContainer .board_paging a.current_page {
+		border-bottom: 2px solid #282A35;
+		font-weight: bold;
+	}
+    

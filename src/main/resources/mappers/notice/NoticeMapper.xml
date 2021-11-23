@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.khculture.notice.model.dao.NoticeMapper">
+
+
+<resultMap id="noticeResultMap" type="com.kh.khculture.notice.model.vo.Notice">
+	<id property="n_no" column="N_NO"/>
+	<result property="n_title" column="N_TITLE"/>
+	<result property="n_content" column="N_CONTENT"/>
+	<result property="n_enroll_date" column="N_ENROLL_DATE"/>
+	<result property="n_count" column="N_COUNT"/>
+	<result property="n_modify_date" column="N_MODIFY_DATE"/>
+	<result property="n_status" column="N_STATUS"/>
+	<result property="m_no" column="M_NO"/>
+	<!-- 
+	<association property="member_roletest" javaType ="com.kh.khculture.notice.model.vo.Member_RoleTEST">
+		<id property="m_no" column="M_NO"/>
+		<result property="authority_code" column="AUTHORITY_CODE"/>
+	</association>
+	 -->
+</resultMap>
+
+
+<!-- 페이지개수 -->
+<select id="getListCount" resultType="_int">
+	SELECT
+		COUNT(*)
+	FROM NOTICE
+	WHERE N_STATUS ='Y'
+</select>
+<select id="getcountentListCount" resultType="_int">
+	SELECT
+		COUNT(*)
+	FROM NOTICE
+	WHERE N_STATUS ='Y'
+		AND N_TITLE LIKE '%' || #{ searchValue } || '%'
+
+</select>
+<!-- 페이징처리된 게시글  -->
+<select id="selectList" parameterType="com.kh.khculture.notice.model.vo.PageInfo" resultMap="noticeResultMap">
+SELECT
+    N_NO
+    , N_TITLE
+    , N_CONTENT
+    , TO_CHAR(N_ENROLL_DATE,'YYYY-MM-DD') N_ENROLL_DATE
+    , M_NO
+FROM ( SELECT 
+               ROWNUM RNUM, NLIST.*
+             FROM(  SELECT 
+                            *
+                         FROM NOTICE
+                         JOIN MEMBER_ROLE USING(M_NO)
+                         WHERE AUTHORITY_CODE=1 
+                            AND N_STATUS='Y' 
+                            ORDER BY N_NO DESC) NLIST )
+WHERE RNUM BETWEEN #{ startRow } AND #{ endRow }
+</select>
+
+<select id="selectContentList" parameterType="com.kh.khculture.notice.model.vo.PageInfo"  resultMap="noticeResultMap" >
+SELECT
+    N_NO
+    , N_TITLE
+    , N_CONTENT
+    , TO_CHAR(N_ENROLL_DATE,'YYYY-MM-DD') N_ENROLL_DATE
+    , M_NO
+FROM ( SELECT 
+               ROWNUM RNUM, NLIST.*
+             FROM(  SELECT 
+                            *
+                         FROM NOTICE
+                         JOIN MEMBER_ROLE USING(M_NO)
+                         WHERE AUTHORITY_CODE=1 
+                            AND N_STATUS='Y' 
+                            AND N_TITLE LIKE '%' || #{ searchValue } || '%'
+                            ORDER BY N_NO DESC) NLIST )
+WHERE RNUM BETWEEN #{ startRow } AND #{ endRow }
+
+</select>
+ 
+<!-- 선택한 게시글 정보들 -->
+<select id="selectNotice" resultMap="noticeResultMap">
+	SELECT
+		N_NO
+		, N_TITLE
+		, N_CONTENT
+		, TO_CHAR(N_ENROLL_DATE,'YYYY-MM-DD') N_ENROLL_DATE
+		, N_COUNT
+		, N_MODIFY_DATE
+		, N_STATUS
+	FROM NOTICE
+   WHERE N_STATUS='Y'
+     AND N_NO = #{ n_no }
+   ORDER BY N_NO DESC 
+</select>
+
+<insert id="noticeInsert" parameterType="com.kh.khculture.notice.model.vo.Notice">
+		INSERT
+		INTO NOTICE
+		(
+			  N_NO
+			, N_TITLE
+			, N_CONTENT
+			, N_ENROLL_DATE
+			, N_COUNT
+			, N_STATUS
+			, M_NO
+		)
+		VALUES
+		(
+			SEQ_NOTICE_NO.NEXTVAL
+			, #{ n_title }
+			, #{ n_content }
+			, SYSDATE
+			, DEFAULT
+			, DEFAULT
+			, #{ m_no }
+		)
+		
+</insert>
+<update id="noticeUpdate" parameterType="com.kh.khculture.notice.model.vo.Notice">
+UPDATE 
+	NOTICE 
+SET N_TITLE = #{ n_title } , N_CONTENT = #{ n_content } , N_ENROLL_DATE = SYSDATE
+WHERE N_NO=#{ n_no }
+
+
+
+</update>
+<delete id="noticeDelete" parameterType="com.kh.khculture.notice.model.vo.Notice">
+UPDATE
+NOTICE
+SET N_STATUS ='N'
+WHERE N_NO=#{ n_no }
+
+</delete>
+
+</mapper>

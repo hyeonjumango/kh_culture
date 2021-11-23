@@ -1,0 +1,44 @@
+# server port config
+# first-project 에서는 server.port:8800으로 썼으나 여기에서는 이러한 방식으로 쓰는 이유는
+# server의 하위에 정의할 수 있는 내용이 많아 추가적으로 작성할때 더욱 간결하게 코드를 작성하기 위해
+server:  port: 8006
+  
+# oracle driver config
+# DB연결정보
+# oracle.jdbc.OracleDriver 
+# jdbc:log4jdbc:oracle:thin:
+# net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+spring:  datasource:    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy 
+    url: jdbc:log4jdbc:oracle:thin:@KHCulture_high?TNS_ADMIN=C:\\STS4\\KHculture_final\\Oracle_Wallet
+    username: admin
+    password:  KHCulture2021
+    hikari:
+      connection-test-query: select sysdate from dual
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: khculture4@gmail.com
+    password: khculture1234@@
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+    multipart:
+      max-file-size:
+        10MB
+
+# mybatis config
+mybatis:
+ mapper-locations: mappers/**/*.xml
+ 
+# logging level (root level - 전역 설정)
+logging:
+  level:
+    root: info
+#    '[com.zaxxer.hikari.HikariDataSource]': trace
+
+# logging level (package level - 지역 설정)
+    '[com.kh.khculture.book]': trace

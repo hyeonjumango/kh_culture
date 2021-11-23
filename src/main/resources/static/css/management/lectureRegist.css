@@ -1,0 +1,111 @@
+@charset "UTF-8";
+.listContainer{
+    display: flex;
+    margin: 0px auto;
+    max-width: 1320px;
+    min-height: 645px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 100px;
+}
+.listContainer > .content{
+    min-width: 1320px;
+}
+.listContainer > .content > .titleArea{
+    text-align: center;
+	margin-top : 100px;
+	height : 130px;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	width : 100%;
+	margin-bottom: 70px;
+}
+.listContainer > .content > .titleArea > h1{
+    font-size: 52px;
+}
+.listContainer > .content > .contentArea{
+    width: 1320px;
+    min-height: 750px;
+    font-size: 20px;
+}
+.listContainer > .content > .contentArea > form > .selectArea1{
+    width: 1320px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+.listContainer > .content > .contentArea > form > .selectArea1 > input{
+    border: 1px solid #F0B95E;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    margin-right: 10px;
+}
+.listContainer > .content > .contentArea > form > .selectArea1 > select{
+    width: 290px;
+    height: 50px;
+    font-size: 20px;
+    border: 1px solid #F0B95E;
+    background-color: white;
+    -webkit-appearance:searchfield;
+    margin-right: 10px;
+    padding-left: 20px;
+    
+}
+.listContainer > .content > .contentArea > form > .selectArea2 {
+    width: 1320px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.listContainer > .content > .contentArea > form > .selectArea2 > span{
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    border: 1px solid #F0B95E;
+    text-align: center;
+    line-height: 50px;
+    margin-right: 20px;
+}
+
+.listContainer > .content > .contentArea > form > .selectArea2 > .imgArea{
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #F0B95E;
+    visibility: hidden;
+}
+.listContainer > .content > .contentArea > form > .selectArea2 > .imgArea > img{
+    width: 150px;
+    height: 150px;
+}
+
+.listContainer > .content > .contentArea > form > .lectureTitle {
+    width: 1320px;
+    height: 50px;
+    border: 1px solid #F0B95E;
+    padding-left: 10px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+
+.listContainer > .content > .contentArea > form > .lectureTitle > input[type=text]{
+    width: 1300px;
+}
+
+.listContainer > .content > .contentArea > form > .btnArea{
+    width: 1320px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.listContainer > .content > .contentArea > form > .btnArea > input[type=submit]{
+    width: 220px;
+    height: 80px;
+    text-align: center;
+    color: white;
+    background-color: #EA9155;
+}

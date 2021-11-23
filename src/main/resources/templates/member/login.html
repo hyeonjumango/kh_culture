@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="/css/member/login.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:include="fragments/header.html"></header>
+<article id="loginForm">
+    <div>    
+        <div>
+            <h1>로그인</h1>
+        </div>
+        <form class="loginForm" action="" method="post">
+            <table class="loginTable">
+                <tr>
+                    <th><img src="/images/member/User_circle.png"></th>
+                    <td><input type="text" name="username" placeholder="아이디를 입력해주세요"></td>
+                </tr>
+                <tr>
+                    <th><img src="/images/member/Lock_fill.png"></th>
+                    <td><input type="password" name="password" placeholder="비밀번호를 입력해주세요"></td>
+                </tr>
+            </table>
+            <button type="submit" name="loginBtn">로그인</button>
+        </form>
+        <div class="find">
+            <a href="/member/findId" onclick="window.open(this.href, '아이디찾기', 'width=600, height=600px, resizable=no'); return false;">아이디 찾기</a>
+            <a href="/member/findPwd" onclick="window.open(this.href, '비밀번호찾기', 'width=600, height=600px, resizable=no'); return false;">비밀번호 찾기</a>
+        </div>
+        <table class="joinInfo">
+            <tr>
+                <td>
+                    <p>KH문화센터에 처음 방문하셨나요?</p>
+                    <p>강좌 신청 서비스는 회원가입 후 이용 가능합니다.</p>
+                </td>
+                <td>
+                    <button type="button" name="joinBtm" onclick="location.href='/member/signUpMember'">회원가입</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</article>
+<footer th:include="fragments/footer.html"></footer>
+</body>
+<script>
+	var msg = '[[${msg}]]';
+	console.log(msg);
+	if(msg) {
+		alert(msg);
+	}
+</script>
+</html>
